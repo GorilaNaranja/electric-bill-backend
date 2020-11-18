@@ -1,45 +1,47 @@
 const Bill = require("../../models/bill");
 
-// const createUser = async (userData) => {
-//   const user = new User({
-//     name: userData.name,
-//     email: userData.email,
-//     password: bcrypt.hashSync(userData.password, 10),
-//     role: userData.role,
-//     language: userData.language,
-//   });
-//   const userDB = await user.save();
-//   return userDB;
-// };
+const createBill = async (billData) => {
+  console.log(billData);
+  const bill = new Bill({
+    Fecha: billData.Fecha,
+    Hora: billData.Hora,
+    Consumo: billData.Consumo,
+    Precio: billData.Precio,
+    Coste: billData.Coste,
+  });
+  const billDB = await bill.save();
+  return billDB;
+};
 
 const getBills = async () => {
   const bills = await Bill.find().exec();
   return bills;
 };
 
-// const getUser = async (id) => {
-//   const user = await User.findById(id).populate("language", "name").exec();
-//   return user;
-// };
+const getBill = async (id) => {
+  const bill = await Bill.findById(id).exec();
+  return bill;
+};
 
-// const editUser = async (id, userData) => {
-//   const user = await User.findByIdAndUpdate(id, userData, {
-//     new: true,
-//     runValidators: true,
-//   });
-//   return user;
-// };
+const editBill = async (id, billData) => {
+  console.log('Edit Bill Service', id);
 
-// const deleteUser = async (id) => {
-//   const user = await User.findByIdAndRemove(id);
-//   return user;
-// };
+  const bill = await Bill.findByIdAndUpdate(id, billData, {
+    new: true,
+    runValidators: true,
+  });
+  return bill;
+};
+
+const deleteBill = async (id) => {
+  const bill = await Bill.findByIdAndRemove(id);
+  return bill;
+};
 
 module.exports = {
+  createBill,
   getBills,
-  // createUser,
-  // getUsers,
-  // getUser,
-  // editUser,
-  // deleteUser,
+  getBill,
+  editBill,
+  deleteBill
 };
