@@ -3,25 +3,25 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const billSchema = new Schema({
-    Fecha: {
-        type: String,
-        required: [true, "Fecha is required"]
-    },
-    Hora: {
-        type: String,
-        required: [true, "Hora is required"]
-    },
-    Consumo: {
-        type: String,
-        required: [true, "Consumo is required"]
-    },
-    Precio: {
+    date: {
         type: Date,
-        required: [true, "Precio is required"]
+        required: [true, "Date is required"]
     },
-    Coste: {
-        type: String,
-        required: [true, "Coste is required"]
+    hour: {
+        type: Number,
+        required: [true, "Hour is required"]
+    },
+    consumption: {
+        type: Number,
+        required: [true, "Consumption is required"]
+    },
+    price: {
+        type: Number,
+        required: [true, "Price is required"]
+    },
+    cost: {
+        type: Number,
+        required: [true, "Cost is required"]
     }
 });
 

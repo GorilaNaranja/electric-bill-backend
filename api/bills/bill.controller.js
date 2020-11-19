@@ -4,7 +4,6 @@ const _ = require("underscore");
 
 const createBill = async (req, res, next) => {
   try {
-    console.log(req.body);
     const body = req.body;
     const bill = await billService.createBill(body);
     res.json({ ok: true, bill });
@@ -37,13 +36,12 @@ const getBill = async (req, res, next) => {
 
 const editBill = async (req, res, next) => {
   const id = req.params.id;
-  console.log('Edit Bill', id);
   const body = _.pick(req.body, [
-    "Fecha",
-    "Hora",
-    "Consumo",
-    "Precio",
-    "Coste",
+    "date",
+    "hour",
+    "consumption",
+    "price",
+    "cost",
   ]);
 
   try {

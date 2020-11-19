@@ -1,13 +1,12 @@
 const Bill = require("../../models/bill");
 
 const createBill = async (billData) => {
-  console.log(billData);
   const bill = new Bill({
-    Fecha: billData.Fecha,
-    Hora: billData.Hora,
-    Consumo: billData.Consumo,
-    Precio: billData.Precio,
-    Coste: billData.Coste,
+    date: billData.date,
+    hour: billData.hour,
+    consumption: billData.consumption,
+    price: billData.price,
+    cost: billData.cost,
   });
   const billDB = await bill.save();
   return billDB;
@@ -24,8 +23,6 @@ const getBill = async (id) => {
 };
 
 const editBill = async (id, billData) => {
-  console.log('Edit Bill Service', id);
-
   const bill = await Bill.findByIdAndUpdate(id, billData, {
     new: true,
     runValidators: true,
