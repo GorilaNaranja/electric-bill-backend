@@ -8,7 +8,10 @@ const bodyParser = require("body-parser");
 const routes = require("./api/routes");
 const { handleErrors } = require("./middlewares/handleErrors");
 const { importCsv } = require("./import.js");
+const cors = require("cors");
 
+app.use(cors());
+app.options("*", cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(routes);
@@ -44,8 +47,6 @@ http.listen(process.env.PORT, () => {
   console.log(`NodeJs listening on port ${process.env.PORT}`);
 });
 
-
 app.use((err, req, res, next) => {
   handleErrors(err, req, res, next);
 });
-
