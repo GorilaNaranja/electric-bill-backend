@@ -6,7 +6,7 @@ const createBill = async (req, res, next) => {
   try {
     const body = req.body;
     const bill = await billService.createBill(body);
-    res.json({ ok: true, bill });
+    res.json({ ok: true, data: bill });
   } catch (error) {
     return next(boom.badData(error.message));
   }
@@ -15,7 +15,7 @@ const createBill = async (req, res, next) => {
 const getBills = async (req, res, next) => {
   try {
     const bills = await billService.getBills();
-    res.json({ ok: true, bills });
+    res.json({ ok: true, data: bills });
   } catch (error) {
     return next(boom.badData(error.message));
   }
@@ -28,7 +28,7 @@ const getBill = async (req, res, next) => {
     if (!bill) {
       return next(boom.badData("Bill not found"));
     }
-    res.json({ ok: true, bill });
+    res.json({ ok: true, data: bill });
   } catch (error) {
     return next(boom.badData(error.message));
   }
@@ -49,7 +49,7 @@ const editBill = async (req, res, next) => {
     if (!bill) {
       return next(boom.badData("Bill not found"));
     }
-    res.json({ ok: true, bill });
+    res.json({ ok: true, data: bill });
   } catch (error) {
     return next(boom.badData(error.message));
   }
@@ -63,7 +63,7 @@ const deleteBill = async (req, res, next) => {
     if (!bill) {
       return next(boom.badData("Bill not found"));
     }
-    res.json({ ok: true, bill });
+    res.json({ ok: true, data: bill });
   } catch (error) {
     return next(boom.badData(error.message));
   }
