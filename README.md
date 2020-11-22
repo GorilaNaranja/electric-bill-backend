@@ -6,6 +6,17 @@
 npm install
 ```
 
+## Create .env file
+
+You must edit .env file with real authentication
+
+```
+PORT = 3000
+DBUSER = user
+DBPASS = password
+DBNAME = dbname
+```
+
 ### Start in develop mode
 
 ```
