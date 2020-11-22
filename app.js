@@ -28,7 +28,6 @@ const connect = async () => {
     console.log("Trying to connect database...");
     await mongoose.connect(uri, options);
     console.log("Database connected");
-    importCsv();
   } catch (e) {
     console.log("Connection error, retrying in 5 sec...");
     setTimeout(connect, 5000);
@@ -40,6 +39,13 @@ connect();
 app.get("/ping", (req, res) => {
   return res.send({
     msg: "API WORKING!",
+  });
+});
+
+app.get("/import-csv", (req, res) => {
+  importCsv();
+  return res.send({
+    msg: "CSV IMPORTED!",
   });
 });
 
